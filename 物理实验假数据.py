@@ -1,20 +1,26 @@
 import random
 
 while True:
-    精确位数=eval(input("请输入数据精确到小数点后多少位"))
+    a=eval(input("请输入数据精确到小数点后多少位 "))
     while True:
         num=[]
-        平均数=eval(input("输入原始数据"))
-        平均数*=pow(10,精确位数)
-        个数=eval(input("你想生成数据的个数"))
-        if 个数%2==1:
-            个数-=1
-            num.append(平均数)
-        个数//=2
-        for i in range(个数):
-            临时=random.randint(1,9)
-            num.append(平均数+临时)
-            num.append(平均数-临时)
+        adv=input("输入原始数据（输入Re重置精确到小数点后位数） ")
+        if adv in ['re','Re','RE']:
+            break
+        adv=eval(adv)
+        adv*=pow(10,a)
+        n=eval(input("你想生成数据的个数 "))
+        if n%2==1:
+            n-=1
+            num.append(adv)
+        for i in range(n//2):
+            temp=random.randint(1,9)
+            num.append(adv+temp)
+            num.append(adv-temp)
         random.shuffle(num)
+        for i in range(n//2):
+            num[random.randint(0,len(num))]+=1
+            num[random.randint(0,len(num))]-=1
         for i in num:
-            print(i/pow(10,精确位数),end='\t')
+            print(i/pow(10,a),end='\t')
+        print()
