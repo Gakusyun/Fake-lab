@@ -10,7 +10,11 @@ while True:
         if 个数%2==1:
             个数-=1
             num.append(平均数)
-        for i in range(个数/2):
+        个数//=2
+        for i in range(个数):
             临时=random.randint(1,9)
             num.append(平均数+临时)
             num.append(平均数-临时)
+        random.shuffle(num)
+        for i in num:
+            print(i/pow(10,精确位数),end='\t')
