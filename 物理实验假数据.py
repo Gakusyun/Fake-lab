@@ -1,12 +1,11 @@
 import random
 
 while True:
-    a=input("请输入数据精确到小数点后多少位 ")
-    for i in a:
-        if i=='.':
-            print("你是不是输错了？")
-            a='0'
-    a=eval(a)
+    try:
+        a=int(input('请输入精确到小数点后多少位 '))
+    except:
+        print('你是不是输错了')
+        a=0
     while True:
         if a==0:
             break
