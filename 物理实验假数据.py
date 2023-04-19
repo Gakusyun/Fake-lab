@@ -5,19 +5,15 @@ def test(c):
     b = 0
     for j in c:
         if j in ['r', 'R']:
-            if b == 0:
-                b += 1
+            b+=3
         if j in ['e', 'E']:
-            b += 1
+            b-=1
         if j in ['x', 'X']:
-            if b == 1:
-                b += 1
+            b+=6
         if j in ['i', 'I']:
-            if b == 2:
-                b += 1
+            b+=5
         if j in ['t', 'T']:
-            if b == 3:
-                b += 1
+            b-=6
     return b
 
 
