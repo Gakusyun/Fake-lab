@@ -9,7 +9,7 @@ back = ""
 while True:
     if back == "EXIT":
         break
-    a = input('请输入精确到小数点后多少位 ')
+    a = input("请输入精确到小数点后多少位 ")
     back = test(a)
     if back == "EXIT":
         break
@@ -19,10 +19,10 @@ while True:
     try:
         a = int(a)
     except:
-        print('你是不是输错了')
+        print("你是不是输错了")
         continue
     while True:
-        n = input('你想生成数据的个数 ')
+        n = input("你想生成数据的个数 ")
         back = test(n)
         if back == "EXIT":
             break
@@ -33,7 +33,7 @@ while True:
             n = eval(n)
             nn = n
         except:
-            print('你是不是输错了(输入Reset重置精确到小数点后位数)')
+            print("你是不是输错了(输入Reset重置精确到小数点后位数)")
             continue
         break
     if back == "EXIT":
@@ -50,7 +50,7 @@ while True:
         try:
             ave = eval(ave)
         except:
-            print('你是不是输错了')
+            print("你是不是输错了")
             continue
         ave *= pow(10, a)
         n = nn
