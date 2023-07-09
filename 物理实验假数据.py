@@ -1,33 +1,20 @@
 import random
+def test(n):
+    n = n.upper()
+    return n
 
 
-def test(c):
-    b = 0
-    for j in c:
-        if j in ['r', 'R']:
-            b+=3
-        if j in ['e', 'E']:
-            b-=1
-        if j in ['x', 'X']:
-            b+=6
-        if j in ['i', 'I']:
-            b+=5
-        if j in ['t', 'T']:
-            b-=6
-    return b
 
-
-back = 0
+back = ""
 while True:
-    if back == 4:
+    if back == "EXIT":
         break
     a = input('请输入精确到小数点后多少位 ')
-    back = 0
     back = test(a)
-    if back == 4:
+    if back == "EXIT":
         break
-    elif back == 2:
-        back = 0
+    elif back == "RE":
+        back = ""
         continue
     try:
         a = int(a)
@@ -37,27 +24,28 @@ while True:
     while True:
         n = input('你想生成数据的个数 ')
         back = test(n)
-        if back == 4:
+        if back == "EXIT":
             break
-        elif back == 2:
-            back = 0
+        elif back == "RE":
+            back = ""
             break
         try:
             n = eval(n)
+            nn = n
         except:
-            print('你是不是输错了(输入Re重置精确到小数点后位数)')
+            print('你是不是输错了(输入Reset重置精确到小数点后位数)')
             continue
         break
-    if back == 4:
+    if back == "EXIT":
         continue
     while True:
         num = []
-        ave = input("输入Re重置精确到小数点后位数和生成个数\n输入原始数据 ")
+        ave = input("输入Reset重置精确到小数点后位数和生成个数\n输入原始数据 ")
         back = test(ave)
-        if back == 4:
+        if back == "EXIT":
             break
-        elif back == 2:
-            back = 0
+        elif back == "RE":
+            back = ""
             break
         try:
             ave = eval(ave)
@@ -65,6 +53,7 @@ while True:
             print('你是不是输错了')
             continue
         ave *= pow(10, a)
+        n = nn
         if n % 2 == 1:
             n -= 1
             num.append(ave)
