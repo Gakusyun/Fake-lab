@@ -1,70 +1,69 @@
 import random
-def test(n):
-    n = n.upper()
-    return n
+import os
 
 
-
-back = ""
-while True:
-    if back == "EXIT":
-        break
-    a = input("请输入精确到小数点后多少位 ")
-    back = test(a)
-    if back == "EXIT":
-        break
-    elif back == "RE":
-        back = ""
-        continue
-    try:
-        a = int(a)
-    except:
-        print("你是不是输错了")
-        continue
+def Accuracy():
     while True:
-        n = input("你想生成数据的个数 ")
-        back = test(n)
-        if back == "EXIT":
-            break
-        elif back == "RE":
-            back = ""
-            break
+        Accuracys = input("请输入精确到小数点后位数 ")
         try:
-            n = eval(n)
-            nn = n
-        except:
-            print("你是不是输错了(输入Reset重置精确到小数点后位数)")
-            continue
-        break
-    if back == "EXIT":
-        continue
-    while True:
-        num = []
-        ave = input("输入Reset重置精确到小数点后位数和生成个数\n输入原始数据 ")
-        back = test(ave)
-        if back == "EXIT":
-            break
-        elif back == "RE":
-            back = ""
-            break
-        try:
-            ave = eval(ave)
+            Accuracys = int(Accuracys)
         except:
             print("你是不是输错了")
             continue
-        ave *= pow(10, a)
-        n = nn
-        if n % 2 == 1:
-            n -= 1
-            num.append(ave)
-        for i in range(n // 2):
-            temp = random.randint(1, 9)
-            num.append(ave + temp)
-            num.append(ave - temp)
-        random.shuffle(num)
-        for i in range(n):
-            num[random.randint(0, len(num) - 1)] += 1
-            num[random.randint(0, len(num) - 1)] -= 1
-        for i in num:
-            print(i / pow(10, a), end='\t')
+        break
+    return Accuracys
+
+
+def Quantity():
+    while True:
+        Quantitys = input("请输入需要数据的数量 ")
+        try:
+            Quantitys = int(Quantitys)
+        except:
+            print("你是不是输错了")
+            continue
+        break
+    return Quantitys
+
+
+def Number():
+    while True:
+        Numbers = input("请输入数据平均值 ")
+        try:
+            Numbers = float(Numbers)
+        except:
+            print("你是不是输错了")
+            continue
+        break
+    return Numbers
+
+
+def spawn(Accuracys, Quantitys, Numbers):
+    num = []
+    if Quantitys % 2 == 1:
+        Quantitys -= 1
+        Numbers *= pow(10, Accuracys)
+        num.append(Numbers)
+    for i in range(Quantitys // 2):
+        temp = random.randint(1, 9)
+        num.append(Numbers + temp)
+        num.append(Numbers - temp)
+    random.shuffle(num)
+    for i in range(Quantitys):
+        num[random.randint(0, len(num) - 1)] += 1
+        num[random.randint(0, len(num) - 1)] -= 1
+    return num
+
+
+def printnum(num, Accuracys):
+    for i in num:
+        print(i / pow(10, Accuracys), end="\t")
         print()
+
+
+Accuracys = Accuracy()
+Quantitys = Quantity()
+while True:
+    Numbers = Number()
+    num = spawn(Accuracys, Quantitys, Numbers)
+    printnum(num, Accuracys)
