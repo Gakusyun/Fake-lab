@@ -59,23 +59,26 @@ def printnum(num, Accuracys):
     for i in num:
         print(i / pow(10, Accuracys), end="\t")
         print()
+
+
 def menu():
     print("1.平均值模式")
     print("2.线性模式")
-    print("0. 返回")
+    print("0.返回")
+
 
 def main():
     menu()
-    choice =input("请选择:")
-    if(choice=="1"):
+    choice = input("请选择:")
+    if (choice == "1"):
         Accuracys = Accuracy()
         Quantitys = Quantity()
         while True:
             Numbers = Number()
             num = spawn(Accuracys, Quantitys, Numbers)
             printnum(num, Accuracys)
-    elif(choice=="2"):
-        print("")#待开发
+    elif (choice == "2"):
+        print("")  # 待开发
 
 
 if __name__ == "__main__":
